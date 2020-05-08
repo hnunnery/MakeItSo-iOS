@@ -33,16 +33,18 @@ struct TaskListView: View {
             }
           }
         }
-        Button(action: { self.presentAddNewItem.toggle() }) {
-          HStack {
-            Image(systemName: "plus.circle.fill")
-              .resizable()
-              .frame(width: 20, height: 20)
-            Text("New Task")
-          }
+        HStack {
+            Spacer()
+            Button(action: { self.presentAddNewItem.toggle() }) {
+              HStack {
+                Image(systemName: "plus.circle.fill")
+                  .resizable()
+                  .frame(width: 50, height: 50)
+              }
+            }
+            .padding()
+            .accentColor(Color(UIColor.systemBlue))
         }
-        .padding()
-        .accentColor(Color(UIColor.systemBlue))
       }
       .navigationBarItems(trailing:
         Button(action: {
