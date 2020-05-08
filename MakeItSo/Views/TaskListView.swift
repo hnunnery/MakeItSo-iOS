@@ -10,6 +10,7 @@ import SwiftUI
 
 struct TaskListView: View {
   @ObservedObject var taskListVM = TaskListViewModel()
+  @Environment(\.colorScheme) var mode
   
   @State var presentAddNewItem = false
   @State var showSettingsScreen = false
@@ -20,6 +21,7 @@ struct TaskListView: View {
         List {
           ForEach (taskListVM.taskCellViewModels) { taskCellVM in
             TaskCell(taskCellVM: taskCellVM)
+                .foregroundColor(taskCellVM.task.completed ? Color(UIColor.systemBlue) : Color(self.mode == .dark ? UIColor.white : UIColor.black))
           }
           .onDelete { indexSet in
             self.taskListVM.removeTasks(atOffsets: indexSet)
